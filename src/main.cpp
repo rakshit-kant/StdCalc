@@ -1,5 +1,29 @@
 #include <bits/stdc++.h>
-#include <limits>
+
+void switcher(char op, double first_num, double second_num) {
+	switch (op) {
+	case '+':
+		std::println("Solution = {}", first_num + second_num);
+		break;
+	case '-':
+		std::println("Solution = {}", first_num - second_num);
+		break;
+	case '*':
+		std::println("Solution = {}", first_num * second_num);
+		break;
+	case '/':
+		if (second_num == 0) {
+			std::println("Error: Number can't be divided by Zero!");
+		} else {
+			std::println("Solution = {}", first_num / second_num);
+		}
+		break;
+
+	default:
+		std::println("Invalid Operator!");
+		break;
+	}
+}
 
 int main(void) {
 	std::println(R"( ____  _      _  ____      _      
@@ -16,9 +40,7 @@ int main(void) {
 	std::print("Enter the First Number: ");
 	while (!(std::cin >> first_num)) {
 		std::print("Invalid Input! Please enter a correct number: ");
-
 		std::cin.clear();
-
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	}
 
@@ -28,30 +50,11 @@ int main(void) {
 	std::print("Enter the Second Number: ");
 	while (!(std::cin >> second_num)) {
 		std::print("Invalid Input! Please enter a correct number: ");
-
 		std::cin.clear();
-
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	}
 
-	switch (op) {
-	case '+':
-		std::println("Solution = {}", first_num + second_num);
-		break;
-	case '-':
-		std::println("Solution = {}", first_num - second_num);
-		break;
-	case '*':
-		std::println("Solution = {}", first_num * second_num);
-		break;
-	case '/':
-		if (second_num == 0) {
-			std::println("Error: Number can't be divided by Zero!");
-			break;
-		} else {
-			std::println("Solution = {}", first_num / second_num);
-			break;
-		}
-	}
+	switcher(op, first_num, second_num);
+
 	return 0;
 }
